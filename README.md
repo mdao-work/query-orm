@@ -1,3 +1,3 @@
-# config_mdao_api
+# composer require mdao/query_orm
 
 配置文件
