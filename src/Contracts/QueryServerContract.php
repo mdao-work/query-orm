@@ -1,20 +1,38 @@
 <?php
 
 
-namespace mdao\Contracts\QueryBuilder;
+namespace mdao\QueryBuilder\Contracts;
 
+
+use mdao\QueryBuilder\Entities\QueryFilter;
+use mdao\QueryBuilder\Entities\QueryOrderBy;
+use mdao\QueryBuilder\Entities\QueryPagination;
+use mdao\QueryBuilder\Entities\QuerySelect;
 
 interface QueryServerContract
 {
-    public function getQueryItems(): array;
+    /**
+     * 条件
+     * @return QueryFilter|null
+     */
+    public function getQueryFilter(): ?QueryFilter;
 
+    /**
+     * 排序
+     * @return QueryOrderBy|null
+     */
     public function getQueryOrderBy(): ?QueryOrderBy;
 
+    /**
+     * 分页
+     * @return QueryPagination|null
+     */
     public function getQueryPagination(): ?QueryPagination;
 
+    /**
+     * 字段
+     * @return QuerySelect|null
+     */
     public function getQuerySelect(): ?QuerySelect;
 
-    public function getQueryWith(): ?QueryWith;
-
-    public function getQueryCount(): int;
 }
