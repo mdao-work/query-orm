@@ -1,5 +1,7 @@
 {
     "name": "mdao/query_orm",
+    "homepage": "https://github.com/mdao-work/query_orm.git",
+    "license": "MIT",
     "authors": [
         {
             "name": "龚哲",
