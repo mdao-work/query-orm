@@ -3,18 +3,20 @@
 
 namespace mdao\QueryBuilder\Entities;
 
-class OrmEntity
+use mdao\QueryBuilder\Contracts\OrmEntityContract;
+
+class OrmEntity implements OrmEntityContract
 {
     /**
      * @var array
      */
     protected $filter = [];
     /**
-     * @var int
+     * @var string|null
      */
     protected $orderBy;
     /**
-     * @var int
+     * @var string|null
      */
     protected $sortedBy;
     /**
@@ -27,23 +29,23 @@ class OrmEntity
     protected $pageSize;
 
     /**
-     * @var
+     * @var array
      */
     protected $select = ['*'];
 
     /**
      * OrmEntity constructor.
      * @param array|null $filter
-     * @param int|null $orderBy
-     * @param int|null $sortedBy
+     * @param string|null $orderBy
+     * @param string|null $sortedBy
      * @param int|null $page
      * @param int|null $pageSize
      * @param array|string[] $select
      */
     public function __construct(
         array $filter = null,
-        int $orderBy = null,
-        int $sortedBy = null,
+        string $orderBy = null,
+        string $sortedBy = null,
         int $page = null,
         int $pageSize = null,
         array $select = ['*']
@@ -57,5 +59,116 @@ class OrmEntity
         $this->select = $select;
     }
 
+    /**
+     * 根据规则创建一个新的实体
+     * @param $attributes
+     * @return static
+     */
+    public static function createEntity($attributes)
+    {
+        $filter = $attributes['filter'] ?? [];
+        $orderBy = $attributes['order_by'] ?? null;
+        $sortedBy = $attributes['sorted_by'] ?? null;
+        $page = $attributes['page'] ?? null;
+        $pageSize = $attributes['page_size'] ?? null;
+        $select = $attributes['select'] ?? ['*'];
 
+        return new static($filter, $orderBy, $sortedBy, $page, $pageSize, $select);
+    }
+
+    /**
+     * @return array
+     */
+    public function getFilter(): array
+    {
+        return $this->filter;
+    }
+
+    /**
+     * @param array $filter
+     */
+    public function setFilter(array $filter): void
+    {
+        $this->filter = $filter;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOrderBy(): ?string
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param int $orderBy
+     */
+    public function setOrderBy(int $orderBy): void
+    {
+        $this->orderBy = $orderBy;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSortedBy(): ?string
+    {
+        return $this->sortedBy;
+    }
+
+    /**
+     * @param int $sortedBy
+     */
+    public function setSortedBy(int $sortedBy): void
+    {
+        $this->sortedBy = $sortedBy;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPage(): int
+    {
+        return $this->page;
+    }
+
+    /**
+     * @param int $page
+     */
+    public function setPage(int $page): void
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPageSize(): int
+    {
+        return $this->pageSize;
+    }
+
+    /**
+     * @param int $pageSize
+     */
+    public function setPageSize(int $pageSize): void
+    {
+        $this->pageSize = $pageSize;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSelect()
+    {
+        return $this->select;
+    }
+
+    /**
+     * @param mixed $select
+     */
+    public function setSelect($select): void
+    {
+        $this->select = $select;
+    }
 }

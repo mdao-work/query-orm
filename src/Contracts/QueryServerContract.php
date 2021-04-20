@@ -13,9 +13,9 @@ interface QueryServerContract
 {
     /**
      * 条件
-     * @return QueryFilter|null
+     * @return array
      */
-    public function getQueryFilter(): ?QueryFilter;
+    public function getQueryFilter(): array;
 
     /**
      * 排序

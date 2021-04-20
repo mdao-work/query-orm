@@ -13,7 +13,7 @@ $parser = new Parser();
 // dump($parser->apply($parserUrlEntity, $url)->toArray());
 // dump($parser->apply($parserUrlEntity, $url)->toJson());
 //
-// $parserDataEntity = (new mdao\QueryBuilder\Entities\ParserDataEntity());
+$parserDataEntity = (new mdao\QueryBuilder\Entities\ParserDataEntity());
 //
 // //data 模式
 // $data = [
