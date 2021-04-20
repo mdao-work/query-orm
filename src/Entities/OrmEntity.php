@@ -46,8 +46,8 @@ class OrmEntity implements OrmEntityContract
         array $filter = null,
         string $orderBy = null,
         string $sortedBy = null,
-        int $page = null,
-        int $pageSize = null,
+        ?int $page = null,
+        ?int $pageSize = null,
         string $select = '*'
     )
     {
@@ -69,10 +69,9 @@ class OrmEntity implements OrmEntityContract
         $filter = $attributes['filter'] ?? [];
         $orderBy = $attributes['order_by'] ?? null;
         $sortedBy = $attributes['sorted_by'] ?? null;
-        $page = $attributes['page'] ?? null;
-        $pageSize = $attributes['page_size'] ?? null;
+        $page = (int)$attributes['page'] ?? null;
+        $pageSize = (int)$attributes['page_size'] ?? null;
         $select = $attributes['select'] ?? '*';
-
         return new static($filter, $orderBy, $sortedBy, $page, $pageSize, $select);
     }
 
