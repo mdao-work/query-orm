@@ -1,9 +1,9 @@
 <?php
 
 
-namespace mdao\QueryBuilder\Entities;
+namespace mdao\QueryOrm\Entities;
 
-use mdao\QueryBuilder\Contracts\OrmEntityContract;
+use mdao\QueryOrm\Contracts\OrmEntityContract;
 
 class OrmEntity implements OrmEntityContract
 {
@@ -29,9 +29,9 @@ class OrmEntity implements OrmEntityContract
     protected $pageSize;
 
     /**
-     * @var array
+     * @var string
      */
-    protected $select = ['*'];
+    protected $select = '*';
 
     /**
      * OrmEntity constructor.
@@ -40,7 +40,7 @@ class OrmEntity implements OrmEntityContract
      * @param string|null $sortedBy
      * @param int|null $page
      * @param int|null $pageSize
-     * @param array|string[] $select
+     * @param string $select
      */
     public function __construct(
         array $filter = null,
@@ -48,7 +48,7 @@ class OrmEntity implements OrmEntityContract
         string $sortedBy = null,
         int $page = null,
         int $pageSize = null,
-        array $select = ['*']
+        string $select = '*'
     )
     {
         $this->filter = $filter;
@@ -71,7 +71,7 @@ class OrmEntity implements OrmEntityContract
         $sortedBy = $attributes['sorted_by'] ?? null;
         $page = $attributes['page'] ?? null;
         $pageSize = $attributes['page_size'] ?? null;
-        $select = $attributes['select'] ?? ['*'];
+        $select = $attributes['select'] ?? '*';
 
         return new static($filter, $orderBy, $sortedBy, $page, $pageSize, $select);
     }
@@ -125,9 +125,9 @@ class OrmEntity implements OrmEntityContract
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPage(): int
+    public function getPage(): ?int
     {
         return $this->page;
     }
@@ -141,9 +141,9 @@ class OrmEntity implements OrmEntityContract
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPageSize(): int
+    public function getPageSize(): ?int
     {
         return $this->pageSize;
     }
@@ -157,9 +157,9 @@ class OrmEntity implements OrmEntityContract
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSelect()
+    public function getSelect(): string
     {
         return $this->select;
     }

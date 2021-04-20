@@ -1,7 +1,7 @@
 <?php
 
 
-namespace mdao\QueryBuilder;
+namespace mdao\QueryOrm;
 
 
 class Query

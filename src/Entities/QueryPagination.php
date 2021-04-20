@@ -1,8 +1,8 @@
 <?php
 
-namespace mdao\QueryBuilder\Entities;
+namespace mdao\QueryOrm\Entities;
 
-use mdao\QueryBuilder\Contracts\Arrayable;
+use mdao\QueryOrm\Contracts\Arrayable;
 
 /**
  * 指定分页

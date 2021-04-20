@@ -1,27 +1,27 @@
 <?php
 
 
-namespace mdao\QueryBuilder\Contracts;
+namespace mdao\QueryOrm\Contracts;
 
 
-use mdao\QueryBuilder\Entities\QueryFilter;
-use mdao\QueryBuilder\Entities\QueryOrderBy;
-use mdao\QueryBuilder\Entities\QueryPagination;
-use mdao\QueryBuilder\Entities\QuerySelect;
+use mdao\QueryOrm\Entities\QueryFilter;
+use mdao\QueryOrm\Entities\QueryOrderBy;
+use mdao\QueryOrm\Entities\QueryPagination;
+use mdao\QueryOrm\Entities\QuerySelect;
 
 interface QueryServerContract
 {
     /**
      * 条件
-     * @return array
+     * @return array|null
      */
-    public function getQueryFilter(): array;
+    public function getQueryFilter(): ?array;
 
     /**
      * 排序
-     * @return QueryOrderBy|null
+     * @return array|null
      */
-    public function getQueryOrderBy(): ?QueryOrderBy;
+    public function getQueryOrderBy(): ?array;
 
     /**
      * 分页

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace mdao\QueryBuilder;
+namespace mdao\QueryOrm;
 
-use mdao\QueryBuilder\Exception\ParserException;
-use mdao\QueryBuilder\Entities\ParserEntity;
-use mdao\QueryBuilder\Contracts\ParserEntityContract;
+use mdao\QueryOrm\Exception\ParserException;
+use mdao\QueryOrm\Entities\ParserEntity;
+use mdao\QueryOrm\Contracts\ParserEntityContract;
 
 class Parser
 {
@@ -17,10 +17,6 @@ class Parser
     protected $pageSize = 'page_size';
     protected $select = 'select';
     protected $param = 'select';
-
-    public function __construct()
-    {
-    }
 
     /**
      * @param ParserEntityContract $parserEntityContract

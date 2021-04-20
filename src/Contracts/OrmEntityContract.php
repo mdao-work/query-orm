@@ -1,7 +1,7 @@
 <?php
 
 
-namespace mdao\QueryBuilder\Contracts;
+namespace mdao\QueryOrm\Contracts;
 
 interface OrmEntityContract
 {
@@ -45,7 +45,7 @@ interface OrmEntityContract
     /**
      * @return int
      */
-    public function getPage(): int;
+    public function getPage(): ?int;
 
     /**
      * @param int $page
@@ -55,7 +55,7 @@ interface OrmEntityContract
     /**
      * @return int
      */
-    public function getPageSize(): int;
+    public function getPageSize(): ?int;
 
     /**
      * @param int $pageSize
@@ -63,9 +63,9 @@ interface OrmEntityContract
     public function setPageSize(int $pageSize): void;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSelect();
+    public function getSelect(): string;
 
     /**
      * @param mixed $select

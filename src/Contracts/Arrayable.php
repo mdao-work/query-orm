@@ -1,7 +1,7 @@
 <?php
 
 
-namespace mdao\QueryBuilder\Contracts;
+namespace mdao\QueryOrm\Contracts;
 
 interface Arrayable
 {

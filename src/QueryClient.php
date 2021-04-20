@@ -1,13 +1,13 @@
 <?php
 
 
-namespace mdao\QueryBuilder;
+namespace mdao\QueryOrm;
 
-use  mdao\QueryBuilder\Entities\QueryFilter;
-use  mdao\QueryBuilder\Entities\ParserEntity;
-use mdao\QueryBuilder\Entities\QueryOrderBy;
-use mdao\QueryBuilder\Entities\QuerySelect;
-use mdao\QueryBuilder\Entities\QueryPagination;
+use  mdao\QueryOrm\Entities\QueryFilter;
+use  mdao\QueryOrm\Entities\ParserEntity;
+use mdao\QueryOrm\Entities\QueryOrderBy;
+use mdao\QueryOrm\Entities\QuerySelect;
+use mdao\QueryOrm\Entities\QueryPagination;
 
 class QueryClient
 {
