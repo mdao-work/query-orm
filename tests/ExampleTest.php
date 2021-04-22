@@ -6,14 +6,6 @@ use mdao\QueryOrm\Entities\OrmEntity;
 
 require_once './vendor/autoload.php';
 
-$b = (new mdao\QueryOrm\QueryClient())
-    ->where('a', '=', 'b')
-    ->select(['b', 'd', 'ded', 'd'])
-    ->whereBetween('b', 'd')
-    ->orderBy('d', 'desc')
-    ->page(1, 15)->toArray();
-dd(http_build_query($b));
-die;
 $data = [
     'filter' => [
         'created_at' => '1',

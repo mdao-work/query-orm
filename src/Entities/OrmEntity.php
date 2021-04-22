@@ -69,8 +69,8 @@ class OrmEntity implements OrmEntityContract
         $filter = $attributes['filter'] ?? [];
         $orderBy = $attributes['order_by'] ?? null;
         $sortedBy = $attributes['sorted_by'] ?? null;
-        $page = (int)$attributes['page'] ?? null;
-        $pageSize = (int)$attributes['page_size'] ?? null;
+        $page = $attributes['page'] ?? null;
+        $pageSize = $attributes['page_size'] ?? null;
         $select = $attributes['select'] ?? '*';
         return new static($filter, $orderBy, $sortedBy, $page, $pageSize, $select);
     }
