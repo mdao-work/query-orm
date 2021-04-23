@@ -8,8 +8,9 @@ require_once './vendor/autoload.php';
 
 $data = [
     'filter' => [
-        'created_at' => '1',
-        'created_at_1' => ['1', 2],
+        // 'created_at' => '1',
+        // 'created_at_1' => ['1', 2],
+        'created_at_3[>]' => 2,
         'created_at[in]' => '1',
         'created_at[~]' => '1',
         'created_at[!]' => '1',
@@ -21,13 +22,17 @@ $data = [
     // 'page_size' => 15,
 ];
 
+// dump(http_build_query($data));die;
 // createEntity
 $a = new QueryServer(OrmEntity::createEntity($data));
-// dd($a);
-dump($a->getQueryFilter());
-dump($a->getQueryOrderBy());
-dump($a->getQueryPagination());
-dd($a->getQuerySelect());
+dump($a->getQueryFilter()[0]->getField());
+dump($a->getQueryFilter()[0]->getOperator());
+dump($a->getQueryFilter()[0]->getValue());
+// dump($a->getQueryFilter()->toArray());
+
+// dump($a->getQueryOrderBy());
+// dump($a->getQueryPagination());
+// dd($a->getQuerySelect());
 die;
 // $parser = new Parser();
 

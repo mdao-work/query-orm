@@ -58,12 +58,10 @@ class ParserEntity implements Arrayable
      */
     public function setFilter(array $filter): self
     {
-        $filters = [];
         foreach ($filter as $value) {
             list($field, $operator, $value) = $value;
-            $filters[] = new QueryFilter($field, $operator, $value);
+            $this->filter[] = new QueryFilter($field, $operator, $value);
         }
-        $this->filter[] = $filters;
         return $this;
     }
 
