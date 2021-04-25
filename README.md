@@ -16,7 +16,7 @@
 | filter[field[[not] in]]=1      | （不在）in 查询  |
 | filter[field[[not] between]]=1 | （不在）区间查询 |
 
-表达式查询的用法示例如下：
+# 表达式查询的用法示例如下：
 
 eq ：等于（=）
 ---
@@ -124,7 +124,6 @@ url?filter[id[not in]]=1,2,3
 where('id','not in',['1','2','3']);
 ```
 
-
 between ：查询 id为1到8 的数据
 ---
 例如：
@@ -145,6 +144,19 @@ url?filter[id[not between]]=1,8
 ```php
 where('id','not between','1,8');
 ```
+多字段，多条件组合使用使用
+```
+url?filter[type[eq]]=1&filter[age[lt]]=50&filter[sex[neq]]=2
+```
+服务端会解析成
+```php
+where([
+['type','=',1],
+['age','<',50],
+['sex','<>',2],
+]);
+```
+表示的查询条件是 type=1 并且 age<50 并且 sex!=2
 
 
 
