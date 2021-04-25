@@ -2,47 +2,151 @@
 
 
 # 查询表达式
-表达式不分大小写，支持的查询表达式有下面几种，分别表示的含义是：
+表达式`不分大小写`，支持的查询表达式有下面几种，分别表示的含义是：
 
 | 表达式                         | 描述             |
 | ------------------------------ | ---------------- |
 | filter[field[eq]]=1            | 等于             |
-| filter[field[NEQ]]=1           | 不等于           |
-| filter[field[GT]]=1            | 大于             |
-| filter[field[EGT]]=1           | 大于等于         |
-| filter[field[LT]]=1            | 小于             |
-| filter[field[ELT]]=1           | 小于等于         |
-| filter[field[LIKE]]=1          | 模糊查询         |
-| filter[field[[NOT] IN]]=1      | （不在）区间查询 |
-| filter[field[[NOT] BETWEEN]]=1 | （不在）IN 查询  |
+| filter[field[neq]]=1           | 不等于           |
+| filter[field[gt]]=1            | 大于             |
+| filter[field[egt]]=1           | 大于等于         |
+| filter[field[lt]]=1            | 小于             |
+| filter[field[elt]]=1           | 小于等于         |
+| filter[field[like]]=1          | 模糊查询         |
+| filter[field[[not] in]]=1      | （不在）in 查询  |
+| filter[field[[not] between]]=1 | （不在）区间查询 |
 
+表达式查询的用法示例如下：
 
-## 逻辑运算-筛选
-### 单字段查询
-1.筛选出，ID 在12,15,32中的这三条数据的
- >`url?filter[created_at[in]]=12,15,32`
+eq ：等于（=）
+---
+例如：
+```
+url?filter[id[eq]]=100 
+或者
+url?filter[id]=100 
+```
+服务端会解析成
 ```php
-$where=['id','in',['12,15,32']];
+where('id',100);
+```
+表示的查询条件就是 id = 100
+
+neq ：不等于（<>）
+---
+例如：
+```
+url?filter[id[neq]]=100 
+```
+服务端会解析成
+```php
+where('id','<>',100);
+```
+表示的查询条件就是 id != 100
+
+gt ：大于（>）
+---
+例如：
+```
+url?filter[id[gt]]=100 
+```
+服务端会解析成
+```php
+where('id','>',100);
+```
+表示的查询条件就是 id > 100
+
+egt ：大于等于（>=）
+---
+例如：
+```
+url?filter[id[egt]]=100 
+```
+服务端会解析成
+```php
+where('id','>=',100);
+```
+表示的查询条件就是 id >= 100
+
+lt ：小于（<）
+---
+例如：
+```
+url?filter[id[lt]]=100 
+```
+服务端会解析成
+```php
+where('id','<',100);
+```
+表示的查询条件就是 id < 100
+
+elt ：小于等于（<=）
+---
+例如：
+```
+url?filter[id[elt]]=100 
+```
+服务端会解析成
+```php
+where('id','<=',100);
+```
+表示的查询条件就是 id <= 100
+
+like ：同sql的LIKE
+---
+例如：
+```
+url?filter[id[like]]=张三% 
+```
+服务端会解析成
+```php
+where('id','like','张三%');
 ```
 
-2. 筛选出，ID 等于12的数据
- >`url?filter[created_at]=12`
+in ：查询 id为1,2,3 的数据
+---
+例如：
+```
+url?filter[id[in]]=1,2,3 
+```
+服务端会解析成
 ```php
-$where=['id','=',12];
+where('id','in',['1','2','3']);
+```
+not in ：查询 id不等于1,2,3 的数据
+---
+例如：
+```
+url?filter[id[not in]]=1,2,3 
+```
+服务端会解析成
+```php
+where('id','not in',['1','2','3']);
 ```
 
-3. 筛选出，ID >=12的数据
- >`url?filter[created_at[>=]]=12`
+
+between ：查询 id为1到8 的数据
+---
+例如：
+```
+url?filter[id[between]]=1,8 
+```
+服务端会解析成
 ```php
-$where=['id','>=',12];
+where('id','between','1,8');
+```
+not between ：查询 id 不在 1,8 的数据
+---
+例如：
+```
+url?filter[id[not between]]=1,8
+```
+服务端会解析成
+```php
+where('id','not between','1,8');
 ```
 
-3. 筛选出，ID <=12的数据
- >`url?filter[created_at[<=]]=12`
-```php
-$where=['id','<=',12];
-```
-### 联合查询
 
-## 字段过滤
+
+
 
