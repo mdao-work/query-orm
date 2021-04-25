@@ -144,7 +144,8 @@ url?filter[id[not between]]=1,8
 ```php
 where('id','not between','1,8');
 ```
-多字段，多条件组合使用使用
+## 多字段，多条件组合使用使用
+---
 ```
 url?filter[type[eq]]=1&filter[age[lt]]=50&filter[sex[neq]]=2
 ```
@@ -158,12 +159,8 @@ where([
 ```
 表示的查询条件是 type=1 并且 age<50 并且 sex!=2
 
-
-   'page' => 1,
-    'select' => 'a,b,d',
-    // 'page_size' => 15,
 # 分页
-
+---
 | 参数名                         | 描述             |
 | ------------------------------ | ---------------- |
 | page            | 页码，从1开始 |
@@ -174,7 +171,29 @@ where([
 url?page=1&page_size=15
 ```
 
+# 字段过滤
+--- 
+| 参数名                         | 描述             |
+| ------------------------------ | ---------------- |
+| select            | 显示的字段已逗号相隔 |
+
+用法示例如下：
+```shell script
+url?select=id,date,content
+```
+表示的是只显示id,date,content 字段
+
+# 字段别名
+---
+如果想要使用字段的别名应该这样写：select=id,date:time,content:text
+```shell script
+url?select=id,date,content:text
+```
+表示的是只显示id,date,text 字段
+
 # 排序
+---
+1. 单字段排序
 | 参数名                         | 描述             |
 | ------------------------------ | ---------------- |
 | order_by            | 排序字段 |
@@ -183,4 +202,19 @@ url?page=1&page_size=15
 ```shell script
 url?order_by=id&sorted_by=desc
 ```
+表示的是根据id降序排序
+
+2. 多字段排序
+多字段排序已逗号分开
+| 参数名                         | 描述             |
+| ------------------------------ | ---------------- |
+| order_by            | 排序字段 |
+| sorted_by           | 排序方式 默认就是升序排列 |
+用法示例如下：
+```shell script
+url?order_by=id,type&sorted_by=desc,asc
+```
+表示的是根据id降序排序，和更据type升序排序
+`请注意 两个字段排序方式相同时可以简写sorted_by字段里面的值为desc或asc`
+
 
