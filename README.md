@@ -181,6 +181,6 @@ url?page=1&page_size=15
 | sorted_by           | 排序方式 默认就是升序排列 |
 用法示例如下：
 ```shell script
-url?order_by=id&sorted_by=15
+url?order_by=id&sorted_by=desc
 ```
 
