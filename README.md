@@ -204,6 +204,7 @@ url?order_by=id&sorted_by=desc
 | ------------------------------ | ---------------- |
 | order_by            | 排序字段 |
 | sorted_by           | 排序方式 默认就是升序排列 |
+
 多字段排序已逗号分开
 用法示例如下：
 ```shell script
@@ -219,3 +220,7 @@ url?order_by=id,type&sorted_by=desc,asc
 | page            | 页码，从1开始 |
 | page_size           | 每页几条数据         |
 
+用法示例如下：
+```shell script
+url?page=1&page_size=15
+```
