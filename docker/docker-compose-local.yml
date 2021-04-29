@@ -1,0 +1,15 @@
+version: '3'
+services:
+  query-orm:
+    image: registry.cn-hangzhou.aliyuncs.com/mdao/docker_php73:latest
+    container_name: query-orm
+    volumes:
+      - ../:/www
+      - ./pm2/apps.json:/etc/pm2/apps.json
+    privileged: true
+    networks:
+      - custom_net
+networks:
+  custom_net:
+    external:
+      name: mdao_net

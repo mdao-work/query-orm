@@ -85,7 +85,8 @@ class Parser
     public function where(array $values): array
     {
         $where = [];
-        $regexp = '/([a-zA-Z0-9_\.]+)(\[(?<operator>\>\=?|in?|\=?|\<\=?|\!|\<\>|\>\<|\!?~)\])?/i';
+        // $regexp = '/([a-zA-Z0-9_\.]+)(\[(?<operator>\>\=?|in?|\=?|\<\=?|\!|\<\>|\>\<|\!?~)\])?/i';
+        $regexp = '/([a-zA-Z0-9_\.]+)(\[(?<operator>|eq|neq|gt|egt|lt|elt|like|in|between|not_in|not_between|\!?~)\])?/i';
         foreach ($values as $field => $value) {
             preg_match($regexp, "[{$field}]", $match);
             $operator = $match['operator'] ?? '';
@@ -111,36 +112,35 @@ class Parser
             case "in":
                 $operator = 'in';
                 break;
-            case "~":
+            case "like":
                 $operator = 'like';
                 break;
-            case "!":
+            case "neq":
                 $operator = '<>';
                 break;
-            case "<":
+            case "lt":
                 $operator = '<';
                 break;
-            case "<=":
+            case "elt":
                 $operator = '<=';
                 break;
-            case ">":
+            case "gt":
                 $operator = '>';
                 break;
-            case ">=":
+            case "egt":
                 $operator = '>=';
                 break;
-            case "<>":
+            case "between":
                 $operator = 'between';
                 break;
-            case "><":
+            case "not_between":
                 $operator = 'not between';
                 break;
-            case "=":
+            case "eq":
             default:
                 $operator = '=';
                 break;
         }
-
         return $operator;
     }
 
