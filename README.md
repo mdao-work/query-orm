@@ -1,22 +1,21 @@
 
 # composer require mdao/query_orm
 不用再向后端催接口、求文档。数据和结构完全定制，要啥有啥。看请求知结果，所求即所得。可一次获取任何数据、任何结构。能去除重复数据，节省流量提高速度。
-对于后端
 
 # 查询表达式
 表达式`不分大小写`，支持的查询表达式有下面几种，分别表示的含义是：
 
 | 表达式                         | 描述             |
 | ------------------------------ | ---------------- |
-| filter[field[eq]]=1            | 等于             |
-| filter[field[neq]]=1           | 不等于           |
-| filter[field[gt]]=1            | 大于             |
-| filter[field[egt]]=1           | 大于等于         |
-| filter[field[lt]]=1            | 小于             |
-| filter[field[elt]]=1           | 小于等于         |
-| filter[field[like]]=1          | 模糊查询         |
-| filter[field[[not] in]]=1      | （不在）in 查询  |
-| filter[field[[not] between]]=1 | （不在）区间查询 |
+| filter[field{eq}]=1            | 等于             |
+| filter[field{neq}]=1           | 不等于           |
+| filter[field{gt}]=1            | 大于             |
+| filter[field{egt}]=1           | 大于等于         |
+| filter[field{lt}]=1            | 小于             |
+| filter[field{elt}]=1           | 小于等于         |
+| filter[field{like}]=1          | 模糊查询         |
+| filter[field{in}]=1      | in 查询  |
+| filter[field{between}]=1 | 区间查询 |
 
 ## 表达式查询的用法示例如下： 
 
@@ -24,7 +23,7 @@ eq ：等于（=）
 ---
 例如：
 ```
-url?filter[id[eq]]=100 
+url?filter[id{eq}]=100 
 或者
 url?filter[id]=100 
 ```
@@ -38,7 +37,7 @@ neq ：不等于（<>）
 ---
 例如：
 ```
-url?filter[id[neq]]=100 
+url?filter[id{neq}]=100 
 ```
 服务端会解析成
 ```php
@@ -50,7 +49,7 @@ gt ：大于（>）
 ---
 例如：
 ```
-url?filter[id[gt]]=100 
+url?filter[id{gt}]=100 
 ```
 服务端会解析成
 ```php
@@ -62,7 +61,7 @@ egt ：大于等于（>=）
 ---
 例如：
 ```
-url?filter[id[egt]]=100 
+url?filter[id{egt}]=100 
 ```
 服务端会解析成
 ```php
@@ -74,7 +73,7 @@ lt ：小于（<）
 ---
 例如：
 ```
-url?filter[id[lt]]=100 
+url?filter[id{lt}]=100 
 ```
 服务端会解析成
 ```php
@@ -86,7 +85,7 @@ elt ：小于等于（<=）
 ---
 例如：
 ```
-url?filter[id[elt]]=100 
+url?filter[id{elt}]=100 
 ```
 服务端会解析成
 ```php
@@ -98,7 +97,7 @@ like ：同sql的LIKE
 ---
 例如：
 ```
-url?filter[id[like]]=张三% 
+url?filter[id{like}]=张三% 
 ```
 服务端会解析成
 ```php
@@ -109,47 +108,33 @@ in ：查询 id为1,2,3 的数据
 ---
 例如：
 ```
-url?filter[id[in]]=1,2,3 
+支持
+url?filter[id]=[1,2,3]
+url?filter[id{in}]=1,2,3 
+url?filter[id{in}]=[1,2,3]
+不支持
+url?filter[id]=1,2,3
 ```
 服务端会解析成
 ```php
-where('id','in',['1','2','3']);
-```
-not in ：查询 id不等于1,2,3 的数据
----
-例如：
-```
-url?filter[id[not in]]=1,2,3 
-```
-服务端会解析成
-```php
-where('id','not in',['1','2','3']);
+where('id','in',('1,2,3'));
 ```
 
 between ：查询 id为1到8 的数据
 ---
 例如：
 ```
-url?filter[id[between]]=1,8 
+url?filter[id{between}]=1,8 
 ```
 服务端会解析成
 ```php
 where('id','between','1,8');
 ```
-not between ：查询 id 不在 1,8 的数据
----
-例如：
-```
-url?filter[id[not between]]=1,8
-```
-服务端会解析成
-```php
-where('id','not between','1,8');
-```
+
 ## 多字段，多条件组合使用
 ---
 ```
-url?filter[type[eq]]=1&filter[age[lt]]=50&filter[sex[neq]]=2
+url?filter[type{eq}]=1&filter[age{lt}]=50&filter[sex{neq}]=2
 ```
 服务端会解析成
 ```php

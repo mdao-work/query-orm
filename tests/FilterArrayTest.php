@@ -28,15 +28,15 @@ class FilterArrayTest extends TestCase
     {
         $data = [
             'filter' => [
-                'created_at_1[eq]' => '=', //等于
-                'created_at_2[neq]' => '<>',//不等于
-                'created_at_3[gt]' => '>',//大于
-                'created_at_4[egt]' => '>=',//大于等于
-                'created_at_5[lt]' => '<',//小于
-                'created_at_6[elt]' => '<=',//小于等于
-                'created_at_7[like]' => 'like',//同sql like
-                'created_at_8[in]' => 'in',//同 sql in
-                'created_at_9[between]' => 'between',//同 sql between
+                'created_at_1{eq}' => '=', //等于
+                'created_at_2{neq}' => '<>',//不等于
+                'created_at_3{gt}' => '>',//大于
+                'created_at_4{egt}' => '>=',//大于等于
+                'created_at_5{lt}' => '<',//小于
+                'created_at_6{elt}' => '<=',//小于等于
+                'created_at_7{like}' => 'like',//同sql like
+                'created_at_8{in}' => 'in',//同 sql in
+                'created_at_9{between}' => 'between',//同 sql between
                 'created_at_10' => '=',//等于
             ],
         ];
@@ -64,15 +64,15 @@ class FilterArrayTest extends TestCase
     {
         $data = [
             'filter' => [
-                'created_at_1[eq]' => '=', //等于
-                'created_at_2[neq]' => '<>',//不等于
-                'created_at_3[gt]' => '>',//大于
-                'created_at_4[egt]' => '>=',//大于等于
-                'created_at_5[lt]' => '<',//小于
-                'created_at_6[elt]' => '<=',//小于等于
-                'created_at_7[like]' => 'like',//同sql like
-                'created_at_8[in]' => 'in',//同 sql in
-                'created_at_9[between]' => 'between',//同 sql between
+                'created_at_1{eq}' => '=', //等于
+                'created_at_2{neq}' => '<>',//不等于
+                'created_at_3{gt}' => '>',//大于
+                'created_at_4{egt}' => '>=',//大于等于
+                'created_at_5{lt}' => '<',//小于
+                'created_at_6{elt}' => '<=',//小于等于
+                'created_at_7{like}' => 'like',//同sql like
+                'created_at_8{in}' => 'in',//同 sql in
+                'created_at_9{between}' => 'between',//同 sql between
                 'created_at_10' => '=',//等于
             ],
         ];
@@ -99,15 +99,15 @@ class FilterArrayTest extends TestCase
     {
         $data = [
             'filter' => [
-                'created_at_1[eq]' => '=', //等于
-                'created_at_2[neq]' => '<>',//不等于
-                'created_at_3[gt]' => '>',//大于
-                'created_at_4[egt]' => '>=',//大于等于
-                'created_at_5[lt]' => '<',//小于
-                'created_at_6[elt]' => '<=',//小于等于
-                'created_at_7[like]' => 'like',//同sql like
-                'created_at_8[in]' => 'in',//同 sql in
-                'created_at_9[between]' => 'between',//同 sql between
+                'created_at_1{eq}' => '=', //等于
+                'created_at_2{neq}' => '<>',//不等于
+                'created_at_3{gt}' => '>',//大于
+                'created_at_4{egt}' => '>=',//大于等于
+                'created_at_5{lt}' => '<',//小于
+                'created_at_6{elt}' => '<=',//小于等于
+                'created_at_7{like}' => 'like',//同sql like
+                'created_at_8{in}' => 'in',//同 sql in
+                'created_at_9{between}' => 'between',//同 sql between
                 'created_at_10' => '=',//等于
             ],
         ];

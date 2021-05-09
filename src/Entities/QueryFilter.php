@@ -130,6 +130,14 @@ class QueryFilter implements Arrayable
     /**
      * @return array
      */
+    public function valueToArray(): array
+    {
+        return is_array($this->value) ? $this->value : explode(',', $this->value);
+    }
+
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [

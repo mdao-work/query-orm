@@ -85,15 +85,18 @@ class Parser
     public function where(array $values): array
     {
         $where = [];
-        // $regexp = '/([a-zA-Z0-9_\.]+)(\[(?<operator>\>\=?|in?|\=?|\<\=?|\!|\<\>|\>\<|\!?~)\])?/i';
-        $regexp = '/([a-zA-Z0-9_\.]+)(\[(?<operator>|eq|neq|gt|egt|lt|elt|like|in|between|not_in|not_between|\!?~)\])?/i';
+        $regexp = '/([a-zA-Z0-9_\.]+)(\{(?<operator>|eq|neq|gt|egt|lt|elt|like|in|between|not_in|not_between|\!?~)\})?/i';
+
         foreach ($values as $field => $value) {
             preg_match($regexp, "[{$field}]", $match);
             $operator = $match['operator'] ?? '';
             $operator = $this->operator($operator);
 
-            if (is_array($value) && $operator = '=') {
+            //是否字符串数组，是字符串数组，转换成数组
+            $tempValue = $this->stringArrayConvertToArray($value);
+            if (is_array($value) || !empty($tempValue)) {
                 $operator = 'in';
+                $value = empty($tempValue) ? $value : $tempValue;
             }
 
             $where[] = [$match[1], $operator, $value];
@@ -107,7 +110,6 @@ class Parser
      */
     public function operator(string $value): string
     {
-        $operator = '';
         switch ($value) {
             case "in":
                 $operator = 'in';
@@ -198,6 +200,30 @@ class Parser
         }
 
         throw new ParserException('error');
+    }
+
+    /**
+     * 字符串、数组转换为格式化的数组
+     * @param string $data 原始字符串
+     * @return array
+     */
+    private function stringArrayConvertToArray(string $data): array
+    {
+        // 数组原样返回
+        if (is_array($data)) {
+            return $data;
+        }
+        $result = [];
+        // 字符串处理
+        $string = (string)$data;
+        if (!empty($string) && preg_match('/^\[.*?]$/', $string)) {
+            $result = json_decode($string, true);
+
+        }
+        if (!is_array($result) || count($result) < 1) {
+            return [];
+        }
+        return $result;
     }
 
 }
