@@ -35,7 +35,9 @@ class QueryServer implements QueryServerContract
     public function getQueryFilter(): ?array
     {
         if ($result = $this->ormEntity->getFilter()) {
-            return $this->parser->apply($this->parserDataEntity, ['filter' => $this->ormEntity->getFilter()])->getFilter();
+            return $this->parser->apply($this->parserDataEntity, [
+                'filter' => $this->ormEntity->getFilter()
+            ])->getFilter();
         }
         return null;
     }
