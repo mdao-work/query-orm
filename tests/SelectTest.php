@@ -15,7 +15,7 @@ class SelectTest extends TestCase
     public function testParserEmpty()
     {
         $queryServer = new QueryServer(OrmEntity::createEntity([]));
-        $this->assertNull($queryServer->getQueryFilter());
+        $this->assertNull($queryServer->getQuerySelect());
     }
 
     /**
