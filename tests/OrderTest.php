@@ -19,6 +19,7 @@ class OrderTest extends TestCase
     }
 
     /**
+     * 降序排列
      * @throws ParserException
      */
     public function testParserDesc()
@@ -32,71 +33,72 @@ class OrderTest extends TestCase
         $queryServer = new QueryServer(OrmEntity::createEntity($arrQuery));
 
         //验证表达式
-        $this->assertEquals([[
+        $this->assertEquals([
             'column' => 'id',
             'direction' => 'desc',
-        ]], $queryServer->getQueryOrderBy()[0]->toArray());
+        ], $queryServer->getQueryOrderBy()[0]->toArray());
     }
 
     /**
-     * 字段
+     * 升序排列
      * @throws ParserException
      */
-    public function testParserNull()
+    public function testParserAsc()
     {
-        $url = "https://www.baidu.com?order_by=id&sorted_by=desc";
+        $url = "https://www.baidu.com?order_by=id&sorted_by=asc";
         //1.0 用parse_url解析URL
         $data = parse_url($url);
         parse_str($data['query'], $arrQuery);
 
         $queryServer = new QueryServer(OrmEntity::createEntity($arrQuery));
 
-        //验证表达式
-        $this->assertEquals([[
+        $this->assertEquals([
             'column' => 'id',
-            'direction' => 'desc',
-        ]], $queryServer->getQueryOrderBy()[0]->toArray());
-
-        //验证表达式
-        $this->assertEquals(null, $queryServer->getQuerySelect());
+            'direction' => 'asc',
+        ], $queryServer->getQueryOrderBy()[0]->toArray());
     }
 
     /**
      * 值
      * @throws ParserException
      */
-    public function testParserAlias()
+    public function testParserFieldsDesc()
     {
-        $url = "https://www.baidu.com?select=id,date,content:text,aa:b";
+        //url?order_by=id,type&sorted_by=desc,asc
+        $url = "https://www.baidu.com?order_by=id,type&sorted_by=desc,asc";
         //1.0 用parse_url解析URL
         $data = parse_url($url);
         parse_str($data['query'], $arrQuery);
 
         $queryServer = new QueryServer(OrmEntity::createEntity($arrQuery));
 
-        //验证表达式
-        $this->assertEquals(['id', 'date', 'text', 'b'], $queryServer->getQuerySelect()->toArray());
-        $this->assertEquals(['content' => 'text', 'aa' => 'b'], $queryServer->getQuerySelect()->getAlias());
+        $this->assertEquals([
+            'column' => 'id',
+            'direction' => 'desc',
+        ], $queryServer->getQueryOrderBy()[0]->toArray());
 
+        $this->assertEquals([
+            'column' => 'type',
+            'direction' => 'asc',
+        ], $queryServer->getQueryOrderBy()[1]->toArray());
     }
 
     /**
      * 值
      * @throws ParserException
      */
-    public function testParserTrim()
+    public function testParserOrderDefault()
     {
-        $url = "https://www.baidu.com?select=,id,date,content:text,aa:b,";
+        //url?order_by=id,type&sorted_by=desc,asc
+        $url = "https://www.baidu.com?order_by=id&sorted_by=asc，";
         //1.0 用parse_url解析URL
         $data = parse_url($url);
         parse_str($data['query'], $arrQuery);
 
         $queryServer = new QueryServer(OrmEntity::createEntity($arrQuery));
-
-        //验证表达式
-        $this->assertEquals(['id', 'date', 'text', 'b'], $queryServer->getQuerySelect()->toArray());
-        $this->assertEquals(['content' => 'text', 'aa' => 'b'], $queryServer->getQuerySelect()->getAlias());
-
+        $this->assertEquals([
+            'column' => 'id',
+            'direction' => 'asc',
+        ], $queryServer->getQueryOrderBy()[0]->toArray());
     }
-
 }

@@ -7,6 +7,12 @@ use mdao\QueryOrm\Contracts\Arrayable;
 
 class QueryOrderBy implements Arrayable
 {
+    /**
+     * desc,asc
+     */
+    const DIRECTION = [
+        'asc', 'desc'
+    ];
 
     /**
      * $field 排序字段
@@ -60,6 +66,9 @@ class QueryOrderBy implements Arrayable
      */
     public function setDirection(string $direction): void
     {
+        if (!in_array($direction, self::DIRECTION)) {
+            $direction = self::DIRECTION[0];
+        }
         $this->direction = $direction;
     }
 
