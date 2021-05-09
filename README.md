@@ -1,6 +1,32 @@
 
-# composer require mdao/query_orm
+# 引入composer
+
 不用再向后端催接口、求文档。数据和结构完全定制，要啥有啥。看请求知结果，所求即所得。可一次获取任何数据、任何结构。能去除重复数据，节省流量提高速度。
+
+# 使用案例
+
+```shell script
+composer require mdao/query_orm
+```
+
+### thinkPHP 使用
+```php
+
+use mdao\QueryOrm\Servers\QueryServer;
+use mdao\QueryOrm\Entities\OrmEntity;
+
+ $queryServer = new QueryServer(OrmEntity::createEntity(request()->get()));
+
+//获取where
+$queryServer->getQueryFilter();
+//获取select
+$queryServer->getQuerySelect();
+//获取OrderBy
+$queryServer->getQueryOrderBy();
+//获取Pagination
+$queryServer->getQueryPagination();
+
+```
 
 # 查询表达式
 表达式`不分大小写`，支持的查询表达式有下面几种，分别表示的含义是：
