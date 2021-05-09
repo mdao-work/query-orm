@@ -2,7 +2,6 @@
 
 namespace mdao\QueryOrm\Test;
 
-use mdao\QueryOrm\Exception\ParserException;
 use \PHPUnit\Framework\TestCase;
 use mdao\QueryOrm\Servers\QueryServer;
 use mdao\QueryOrm\Entities\OrmEntity;
