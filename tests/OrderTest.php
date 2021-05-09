@@ -21,7 +21,7 @@ class OrderTest extends TestCase
     /**
      * @throws ParserException
      */
-    public function testParser()
+    public function testParserDesc()
     {
 
         $url = "https://www.baidu.com?order_by=id&sorted_by=desc";
