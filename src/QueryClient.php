@@ -3,8 +3,8 @@
 
 namespace mdao\QueryOrm;
 
-use  mdao\QueryOrm\Entities\QueryFilter;
-use  mdao\QueryOrm\Entities\ParserEntity;
+use mdao\QueryOrm\Entities\QueryFilter;
+use mdao\QueryOrm\Entities\ParserEntity;
 use mdao\QueryOrm\Entities\QueryOrderBy;
 use mdao\QueryOrm\Entities\QuerySelect;
 use mdao\QueryOrm\Entities\QueryPagination;

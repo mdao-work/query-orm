@@ -3,7 +3,6 @@
 
 namespace mdao\QueryOrm\Entities;
 
-
 use mdao\QueryOrm\Contracts\Arrayable;
 
 class QueryOrderBy implements Arrayable
@@ -74,5 +73,4 @@ class QueryOrderBy implements Arrayable
             'direction' => $this->getDirection(),
         ];
     }
-
 }

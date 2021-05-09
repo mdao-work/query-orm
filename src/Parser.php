@@ -44,7 +44,7 @@ class Parser
         $pagination = $this->pagination($page, $pageSize);
 
         $select = $params[$this->select] ?? '';
-
+        $select = trim($select, ',');
         $select = $this->select($select);
 
         return new ParserEntity($filter, $select, $order, $pagination);
@@ -218,12 +218,10 @@ class Parser
         $string = (string)$data;
         if (!empty($string) && preg_match('/^\[.*?]$/', $string)) {
             $result = json_decode($string, true);
-
         }
         if (!is_array($result) || count($result) < 1) {
             return [];
         }
         return $result;
     }
-
 }

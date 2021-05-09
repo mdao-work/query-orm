@@ -15,7 +15,6 @@ use mdao\QueryOrm\Entities\QuerySelect;
 use mdao\QueryOrm\Exception\ParserException;
 use mdao\QueryOrm\Parser;
 
-
 class QueryServer implements QueryServerContract
 {
     protected $ormEntity;
@@ -53,7 +52,6 @@ class QueryServer implements QueryServerContract
                 'sorted_by' => $this->ormEntity->getSortedBy(),
             ])
                 ->getOrder();
-
         }
         return null;
     }
@@ -67,7 +65,6 @@ class QueryServer implements QueryServerContract
                 'page_size' => $this->ormEntity->getPageSize(),
             ])
                 ->getPagination();
-
         }
         return null;
     }

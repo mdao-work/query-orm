@@ -49,8 +49,7 @@ class OrmEntity implements OrmEntityContract
         ?int $page = null,
         ?int $pageSize = null,
         string $select = '*'
-    )
-    {
+    ) {
         $this->filter = $filter;
         $this->orderBy = $orderBy;
         $this->sortedBy = $sortedBy;

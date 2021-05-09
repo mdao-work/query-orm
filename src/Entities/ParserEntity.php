@@ -125,6 +125,7 @@ class ParserEntity implements Arrayable
      */
     public function setSelect(array $select): self
     {
+
         $this->select = new QuerySelect($select);
 
         return $this;
@@ -148,7 +149,6 @@ class ParserEntity implements Arrayable
             $queries['filter'] = $filterArray;
         }
         if ($this->order) {
-
             $orders = $this->getOrder();
 
             $orderArray = [];

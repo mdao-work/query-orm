@@ -3,7 +3,7 @@
 
 namespace mdao\QueryOrm\Entities;
 
-use  mdao\QueryOrm\Contracts\ParserEntityContract;
+use mdao\QueryOrm\Contracts\ParserEntityContract;
 
 class ParserUrlEntity implements ParserEntityContract
 {
@@ -18,4 +18,3 @@ class ParserUrlEntity implements ParserEntityContract
         return $result;
     }
 }
-

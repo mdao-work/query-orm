@@ -3,7 +3,7 @@
 
 namespace mdao\QueryOrm\Entities;
 
-use  mdao\QueryOrm\Contracts\ParserEntityContract;
+use mdao\QueryOrm\Contracts\ParserEntityContract;
 
 class ParserDataEntity implements ParserEntityContract
 {
@@ -11,7 +11,7 @@ class ParserDataEntity implements ParserEntityContract
      * @param array $param
      * @return array
      */
-    public function apply( $param)
+    public function apply($param)
     {
         return $param;
     }

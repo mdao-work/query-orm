@@ -3,7 +3,6 @@
 
 namespace mdao\QueryOrm\Contracts;
 
-
 use mdao\QueryOrm\Entities\QueryFilter;
 use mdao\QueryOrm\Entities\QueryOrderBy;
 use mdao\QueryOrm\Entities\QueryPagination;
@@ -34,5 +33,4 @@ interface QueryServerContract
      * @return QuerySelect|null
      */
     public function getQuerySelect(): ?QuerySelect;
-
 }

@@ -7,3 +7,6 @@ do
     echo $i
     ./vendor/bin/phpunit --configuration ./phpunit.xml --filter $i
 done
+
+#  ./vendor/bin/phpunit --configuration ./phpunit.xml --filter FilterUrlTest
+#  ./vendor/bin/phpunit --configuration ./phpunit.xml --filter FilterUrlTest

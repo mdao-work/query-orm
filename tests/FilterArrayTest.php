@@ -2,6 +2,7 @@
 
 namespace mdao\QueryOrm\Test;
 
+use mdao\QueryOrm\Exception\ParserException;
 use \PHPUnit\Framework\TestCase;
 use mdao\QueryOrm\Servers\QueryServer;
 use mdao\QueryOrm\Entities\OrmEntity;
@@ -9,7 +10,7 @@ use mdao\QueryOrm\Entities\OrmEntity;
 class FilterArrayTest extends TestCase
 {
     /**
-     * @throws \mdao\QueryOrm\Exception\ParserException
+     * @throws ParserException
      */
     public function testParserEmpty()
     {
@@ -22,7 +23,7 @@ class FilterArrayTest extends TestCase
 
     /**
      * 表达式
-     * @throws \mdao\QueryOrm\Exception\ParserException
+     * @throws ParserException
      */
     public function testParserExp()
     {
@@ -58,7 +59,7 @@ class FilterArrayTest extends TestCase
 
     /**
      * 字段
-     * @throws \mdao\QueryOrm\Exception\ParserException
+     * @throws ParserException
      */
     public function testParserField()
     {
@@ -93,7 +94,7 @@ class FilterArrayTest extends TestCase
 
     /**
      * 值
-     * @throws \mdao\QueryOrm\Exception\ParserException
+     * @throws ParserException
      */
     public function testParserValue()
     {
